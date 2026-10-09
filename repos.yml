@@ -1,0 +1,40 @@
+# Held-out repositories, fixed before any run (see PROTOCOL.md section 3).
+# Never used while developing or tuning. Only the URL, commit SHAs and our
+# labels are published, no copied code. Counts below are re-measured with
+# `git rev-list --count` at clone time.
+repos:
+  - name: flask
+    url: https://github.com/pallets/flask
+    licence: BSD-3-Clause
+    language: Python
+    status: proposed
+    pinned_sha: null
+    commit_count_at_clone: null
+  - name: express
+    url: https://github.com/expressjs/express
+    licence: MIT
+    language: JavaScript
+    status: proposed
+    pinned_sha: null
+    commit_count_at_clone: null
+  - name: httpx
+    url: https://github.com/encode/httpx
+    licence: BSD-3-Clause
+    language: Python
+    status: proposed
+    pinned_sha: null
+    commit_count_at_clone: null
+  - name: hono
+    url: https://github.com/honojs/hono
+    licence: MIT
+    language: TypeScript
+    status: proposed
+    pinned_sha: null
+    commit_count_at_clone: null
+  - name: black
+    url: https://github.com/psf/black
+    licence: MIT
+    language: Python
+    status: proposed
+    pinned_sha: null
+    commit_count_at_clone: null
