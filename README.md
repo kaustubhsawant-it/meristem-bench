@@ -4,6 +4,8 @@ A benchmark for one question: when a stored fact about a codebase stops being tr
 
 Status: development split, first held-out split (Meristem commit `93292d9`, tag `paper-eval-1`) and a second held-out set for the fixed system (commit `bb1ee23`, Amendment 3) have been run. `PROTOCOL.md` is the pre-registered plan with dated amendments, and `repos.yml` lists the held-out repositories with pinned commits. All figures are self-authored.
 
+Paper and system: [kaustubhsawant-it/meristem](https://github.com/kaustubhsawant-it/meristem) (paper in `paper/`, BSL 1.1 source-available). The Meristem version scored on the first held-out set is the tag `paper-eval-1`; the fixed version is commit `bb1ee23`.
+
 ## How to rerun
 
 Requires Python 3.12, `uv`, and a checkout of the Meristem source (`../meristem`) with the ONNX embedder installed (`meristem embedder install`).
