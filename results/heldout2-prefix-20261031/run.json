@@ -1,0 +1,93 @@
+{
+  "arms": [
+    "meristem",
+    "meristem_no_liveness",
+    "meristem_no_gate",
+    "embed_only",
+    "grep",
+    "grep_path_check",
+    "whole_file",
+    "oracle",
+    "meristem@0.7",
+    "embed_only@0.7",
+    "meristem@0.75"
+  ],
+  "bench": {
+    "dirty": true,
+    "sha": "7129580f6dbb49c3445dff5a925d40d2e97046a2"
+  },
+  "command": "tools/run_split.py --split heldout2 --tasks-dir tasks/heldout2 --corpora corpora/heldout2 --floors tasks/dev/floors.json --extra-arms meristem@0.7,embed_only@0.7,meristem@0.75 --note system before the fixes (tag paper-eval-1) --out results/heldout2-prefix-20261031",
+  "embedder": "bge-small-en-v1.5",
+  "errors": 0,
+  "floors": {
+    "embed_only": 0.75,
+    "meristem": 0.75,
+    "meristem_no_liveness": 0.75
+  },
+  "floors_tuned_on": [
+    "axios",
+    "click",
+    "fastify",
+    "requests",
+    "starlette"
+  ],
+  "liveness_freshness_seconds": 0,
+  "meristem_source": {
+    "dirty": false,
+    "sha": "93292d96f2cb59fb56f2b98aa20a81d9e9e77b16"
+  },
+  "n_tasks": 516,
+  "not_run": {
+    "cclint": "instruction-file checker; not installed offline",
+    "claudemd-auditor": "instruction-file checker; not installed offline",
+    "graphiti": "needs an LLM and a graph database; not installed",
+    "hipporag": "needs an LLM for open information extraction; not installed",
+    "mem0": "needs a hosted or local LLM to extract memories; no paid calls in this protocol",
+    "staleguard": "instruction-file checker; not installed offline",
+    "vigiles": "instruction-file checker; not installed offline"
+  },
+  "note": "system before the fixes (tag paper-eval-1)",
+  "packages": {
+    "meristem": "0.3.0",
+    "numpy": "2.5.4",
+    "onnxruntime": "1.31.1",
+    "tokenizers": "0.23.3"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.2",
+  "query_styles": [
+    "query",
+    "query_typed"
+  ],
+  "repos": {
+    "fastapi": {
+      "commit_count": 7957,
+      "dirty": false,
+      "sha": "45cb2252c737906f37544f5ba6bee0295fb81468"
+    },
+    "got": {
+      "commit_count": 1790,
+      "dirty": false,
+      "sha": "6b5aafc1cd538998728be6f45c65b0f80bae01b2"
+    },
+    "koa": {
+      "commit_count": 1315,
+      "dirty": false,
+      "sha": "b786e7b456782c2cff1d6549cd4c8dba3feeb262"
+    },
+    "uvicorn": {
+      "commit_count": 1589,
+      "dirty": false,
+      "sha": "9d81c12a2c411d3bf104368472b708a3218d9b4e"
+    }
+  },
+  "seconds": 101.9,
+  "split": "heldout2",
+  "started_at": "2026-10-31T21:57:54",
+  "tasks_sha256": {
+    "fastapi.jsonl": "a920baeab0bf09f0b641cdfd56eb38eabd5fd00e1218c89a0ea2fccc84fc2aac",
+    "got.jsonl": "9ddbb6a09ab2729a6dcf9bcd99e125f0de742125d64338adf72a8f1ab405643d",
+    "koa.jsonl": "ef38879e3c2695e5f21c2cc451b89154a1b00e61020d553cda8e57e060d49039",
+    "uvicorn.jsonl": "a6265b2a51a38f71eebd521c411342055a017564b71fa3a599963371828d2b19"
+  }
+}

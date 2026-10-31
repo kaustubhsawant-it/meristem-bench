@@ -19,11 +19,12 @@ import run_bench  # noqa: E402
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--split", choices=("dev", "heldout"), required=True)
+    ap.add_argument("--split", choices=("dev", "heldout", "heldout2"), required=True)
     ap.add_argument("--tasks-dir", type=Path, required=True)
     ap.add_argument("--corpora", type=Path, required=True)
     ap.add_argument("--floors", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--note", default="", help="free text stored in run.json, e.g. post-hoc or the system version")
     ap.add_argument("--extra-arms", default="", help="comma list such as meristem@0.7,embed_only@0.7 (sensitivity rows at a fixed floor)")
     args = ap.parse_args(argv)
 
@@ -55,6 +56,7 @@ def main(argv: list[str] | None = None) -> int:
         repo_state[tasks_file.stem] = {**state, "commit_count": int(count or 0)}
     doc = {
         "split": args.split,
+        "note": args.note,
         "command": " ".join(sys.argv),
         "started_at": time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(started)),
         "seconds": round(time.time() - started, 1),

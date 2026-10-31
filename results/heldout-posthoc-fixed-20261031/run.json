@@ -1,0 +1,99 @@
+{
+  "arms": [
+    "meristem",
+    "meristem_no_liveness",
+    "meristem_no_gate",
+    "embed_only",
+    "grep",
+    "grep_path_check",
+    "whole_file",
+    "oracle",
+    "meristem@0.7",
+    "embed_only@0.7",
+    "meristem@0.75"
+  ],
+  "bench": {
+    "dirty": true,
+    "sha": "7129580f6dbb49c3445dff5a925d40d2e97046a2"
+  },
+  "command": "tools/run_split.py --split heldout --tasks-dir tasks/heldout --corpora corpora/heldout --floors tasks/dev/floors.json --extra-arms meristem@0.7,embed_only@0.7,meristem@0.75 --note post-hoc: fixed system on the first held-out split --out results/heldout-posthoc-fixed-20261031",
+  "embedder": "bge-small-en-v1.5",
+  "errors": 0,
+  "floors": {
+    "embed_only": 0.75,
+    "meristem": 0.75,
+    "meristem_no_liveness": 0.75
+  },
+  "floors_tuned_on": [
+    "axios",
+    "click",
+    "fastify",
+    "requests",
+    "starlette"
+  ],
+  "liveness_freshness_seconds": 0,
+  "meristem_source": {
+    "dirty": true,
+    "sha": "bb1ee23990e6b18fa4902760ec1f9c087bea47b5"
+  },
+  "n_tasks": 602,
+  "not_run": {
+    "cclint": "instruction-file checker; not installed offline",
+    "claudemd-auditor": "instruction-file checker; not installed offline",
+    "graphiti": "needs an LLM and a graph database; not installed",
+    "hipporag": "needs an LLM for open information extraction; not installed",
+    "mem0": "needs a hosted or local LLM to extract memories; no paid calls in this protocol",
+    "staleguard": "instruction-file checker; not installed offline",
+    "vigiles": "instruction-file checker; not installed offline"
+  },
+  "note": "post-hoc: fixed system on the first held-out split",
+  "packages": {
+    "meristem": "0.3.0",
+    "numpy": "2.5.4",
+    "onnxruntime": "1.31.1",
+    "tokenizers": "0.23.3"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.2",
+  "query_styles": [
+    "query",
+    "query_typed"
+  ],
+  "repos": {
+    "black": {
+      "commit_count": 2473,
+      "dirty": false,
+      "sha": "408211f4ae4ec7f119aae8a773ad14bcc6a17cba"
+    },
+    "express": {
+      "commit_count": 6183,
+      "dirty": false,
+      "sha": "1c6f1b0fe4000977b9a7b4f34097e4d527dd9824"
+    },
+    "flask": {
+      "commit_count": 5566,
+      "dirty": false,
+      "sha": "49943b5a94413a530761350f04e896f76e8d620e"
+    },
+    "hono": {
+      "commit_count": 2895,
+      "dirty": false,
+      "sha": "17ad0e21f5a91c939eeafa3df05793a8ea60f016"
+    },
+    "httpx": {
+      "commit_count": 1523,
+      "dirty": false,
+      "sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254"
+    }
+  },
+  "seconds": 125.6,
+  "split": "heldout",
+  "started_at": "2026-10-31T22:01:48",
+  "tasks_sha256": {
+    "black.jsonl": "6d7365c418793311028a7f49d0ce58cf9b1b9b1662591be937d37d12704cad70",
+    "express.jsonl": "d42c2212ada27861c1b4c034d19cfb551d39e49df601be2d4a11e8a032cd39d0",
+    "flask.jsonl": "da0e51e340c8cc99b3ca013fdf9dffef6baaf18d3a41a41013a5781cf89e0dc3",
+    "hono.jsonl": "be3eddd3d3de7d42c55f6119bf067a637169b93007fa5b6016e404e13e2a993f",
+    "httpx.jsonl": "3f755a2b9bc1da26a370322cdd56876878d1aae39a595817f5da81196fde18bf"
+  }
+}

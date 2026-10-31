@@ -133,11 +133,28 @@ def scale_table(path: Path) -> str:
     return "\n".join(lines) + "\n"
 
 
+def fixes_table(entries: list[tuple[str, Path, Path]]) -> str:
+    lines = [
+        "\\begin{tabular}{@{}llccc@{}}",
+        "\\toprule",
+        "Split & System & Stale-serve \\% & Live recall \\% & Abstain false-serve \\% \\\\",
+        "\\midrule",
+    ]
+    for label, before, after in entries:
+        for system, path in (("before fixes", before), ("after fixes", after)):
+            arm = json.loads(path.read_text())["arms"]["meristem"]
+            lines.append(f"{label} & {system} & {pct(arm['stale_serve'])} & {pct(arm['live_recall'])} & {pct(arm['abstain_false_serve'])} \\\\")
+        lines.append("\\addlinespace")
+    lines[-1:] = ["\\bottomrule", "\\end{tabular}"]
+    return "\n".join(lines) + "\n"
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--summary", action="append", default=[], metavar="NAME=PATH")
     ap.add_argument("--liveness", type=Path)
     ap.add_argument("--scale", type=Path)
+    ap.add_argument("--fixes", action="append", default=[], metavar="LABEL=BEFORE,AFTER")
     ap.add_argument("--out", type=Path, required=True)
     args = ap.parse_args(argv)
     args.out.mkdir(parents=True, exist_ok=True)
@@ -150,6 +167,13 @@ def main(argv: list[str] | None = None) -> int:
         sens = sensitivity_table(summary)
         if sens:
             (args.out / f"{label}_sensitivity.tex").write_text(sens, encoding="utf-8")
+    if args.fixes:
+        entries = []
+        for item in args.fixes:
+            label, _, paths = item.partition("=")
+            before, _, after = paths.partition(",")
+            entries.append((label, Path(before), Path(after)))
+        (args.out / "fixes.tex").write_text(fixes_table(entries), encoding="utf-8")
     if args.scale:
         (args.out / "scale.tex").write_text(scale_table(args.scale), encoding="utf-8")
     if args.liveness:
