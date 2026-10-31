@@ -38,3 +38,35 @@ repos:
     status: approved 2026-10-31
     pinned_sha: 408211f4ae4ec7f119aae8a773ad14bcc6a17cba
     commit_count_at_clone: 2473
+
+# Second held-out set, fixed 2026-10-31 before any task was mined from it (PROTOCOL.md, Amendment 3).
+# Used once, for the system after the dependency-check fixes. Never used while developing or tuning.
+repos_set2:
+  - name: koa
+    url: https://github.com/koajs/koa
+    licence: MIT
+    language: JavaScript
+    status: registered 2026-10-31
+    pinned_sha: b786e7b456782c2cff1d6549cd4c8dba3feeb262
+    commit_count_at_clone: 1315
+  - name: got
+    url: https://github.com/sindresorhus/got
+    licence: MIT
+    language: TypeScript
+    status: registered 2026-10-31
+    pinned_sha: 6b5aafc1cd538998728be6f45c65b0f80bae01b2
+    commit_count_at_clone: 1790
+  - name: fastapi
+    url: https://github.com/tiangolo/fastapi
+    licence: MIT
+    language: Python
+    status: registered 2026-10-31
+    pinned_sha: 45cb2252c737906f37544f5ba6bee0295fb81468
+    commit_count_at_clone: 7957
+  - name: uvicorn
+    url: https://github.com/encode/uvicorn
+    licence: BSD-3-Clause
+    language: Python
+    status: registered 2026-10-31
+    pinned_sha: 9d81c12a2c411d3bf104368472b708a3218d9b4e
+    commit_count_at_clone: 1589

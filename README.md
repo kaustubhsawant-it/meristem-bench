@@ -22,4 +22,4 @@ Tests: `python -m pytest tests`.
 
 ## Licence
 
-No licence has been chosen yet, so no licence file is included. Until one is added, all rights are reserved by the author.
+Apache License 2.0 (see `LICENSE`). The benchmark imports Meristem, which is licensed separately under the Business Source License 1.1; the pre-registered held-out run used Meristem commit `93292d9`.
