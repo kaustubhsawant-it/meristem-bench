@@ -7,34 +7,34 @@ repos:
     url: https://github.com/pallets/flask
     licence: BSD-3-Clause
     language: Python
-    status: proposed
-    pinned_sha: null
-    commit_count_at_clone: null
+    status: approved 2026-10-31
+    pinned_sha: 49943b5a94413a530761350f04e896f76e8d620e
+    commit_count_at_clone: 5566
   - name: express
     url: https://github.com/expressjs/express
     licence: MIT
     language: JavaScript
-    status: proposed
-    pinned_sha: null
-    commit_count_at_clone: null
+    status: approved 2026-10-31
+    pinned_sha: 1c6f1b0fe4000977b9a7b4f34097e4d527dd9824
+    commit_count_at_clone: 6183
   - name: httpx
     url: https://github.com/encode/httpx
     licence: BSD-3-Clause
     language: Python
-    status: proposed
-    pinned_sha: null
-    commit_count_at_clone: null
+    status: approved 2026-10-31
+    pinned_sha: b5addb64f0161ff6bfe94c124ef76f6a1fba5254
+    commit_count_at_clone: 1523
   - name: hono
     url: https://github.com/honojs/hono
     licence: MIT
     language: TypeScript
-    status: proposed
-    pinned_sha: null
-    commit_count_at_clone: null
+    status: approved 2026-10-31
+    pinned_sha: 17ad0e21f5a91c939eeafa3df05793a8ea60f016
+    commit_count_at_clone: 2895
   - name: black
     url: https://github.com/psf/black
     licence: MIT
     language: Python
-    status: proposed
-    pinned_sha: null
-    commit_count_at_clone: null
+    status: approved 2026-10-31
+    pinned_sha: 408211f4ae4ec7f119aae8a773ad14bcc6a17cba
+    commit_count_at_clone: 2473

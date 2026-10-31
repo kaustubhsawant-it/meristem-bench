@@ -1,0 +1,50 @@
+{
+  "embedder": "bge-small-en-v1.5",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.2",
+  "queries_per_size": 100,
+  "sizes": {
+    "1000": {
+      "embed_only": {
+        "p50_ms": 18.36,
+        "p95_ms": 20.91
+      },
+      "grep": {
+        "p50_ms": 3.33,
+        "p95_ms": 3.83
+      },
+      "meristem": {
+        "p50_ms": 22.41,
+        "p95_ms": 24.78
+      }
+    },
+    "10000": {
+      "embed_only": {
+        "p50_ms": 50.69,
+        "p95_ms": 57.84
+      },
+      "grep": {
+        "p50_ms": 34.69,
+        "p95_ms": 38.92
+      },
+      "meristem": {
+        "p50_ms": 64.41,
+        "p95_ms": 83.72
+      }
+    },
+    "200": {
+      "embed_only": {
+        "p50_ms": 19.54,
+        "p95_ms": 20.29
+      },
+      "grep": {
+        "p50_ms": 0.7,
+        "p95_ms": 0.72
+      },
+      "meristem": {
+        "p50_ms": 22.08,
+        "p95_ms": 23.66
+      }
+    }
+  }
+}

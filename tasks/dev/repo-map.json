@@ -1,0 +1,22 @@
+{
+  "requests": {
+    "tasks": "tasks/dev/requests.jsonl",
+    "repo": "corpora/dev/requests"
+  },
+  "click": {
+    "tasks": "tasks/dev/click.jsonl",
+    "repo": "corpora/dev/click"
+  },
+  "starlette": {
+    "tasks": "tasks/dev/starlette.jsonl",
+    "repo": "corpora/dev/starlette"
+  },
+  "axios": {
+    "tasks": "tasks/dev/axios.jsonl",
+    "repo": "corpora/dev/axios"
+  },
+  "fastify": {
+    "tasks": "tasks/dev/fastify.jsonl",
+    "repo": "corpora/dev/fastify"
+  }
+}

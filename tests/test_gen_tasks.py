@@ -55,7 +55,7 @@ class GenTasksTest(unittest.TestCase):
         self.repo = SyntheticRepo(self._tmp.name)
 
     def by(self, tasks, ttype, dep):
-        return [t for t in tasks if t["type"] == ttype and f"declares {dep} as" in t["fact"]]
+        return [t for t in tasks if t["type"] == ttype and t["dep"]["name"] == dep]
 
     def test_falsified_and_live_from_package_json(self):
         c1 = self.repo.commit({"package.json": pkg(**{"left-pad": "1", "lodash": "4"})})
@@ -75,7 +75,7 @@ class GenTasksTest(unittest.TestCase):
         for t in tasks:
             self.assertEqual(t["stratum"], "checkable")
             self.assertEqual(t["repo"], "demo")
-            self.assertEqual(t["check"]["kind"], "regex")
+            self.assertEqual(t["check"]["kind"], "declared")
 
     def test_requirements_and_pyproject(self):
         r1 = self.repo.commit({"requirements.txt": "requests>=2\nFlask_Login==0.6  # auth\n-r other.txt\n"})
@@ -123,11 +123,54 @@ class GenTasksTest(unittest.TestCase):
         tasks, _, _ = gen_tasks.generate(self._tmp.name)
         self.assertEqual(tasks, [])
 
-    def test_task_dropped_when_name_remains_elsewhere_in_file(self):
+    def test_name_in_another_section_is_not_a_declaration(self):
         self.repo.commit({"package.json": '{"dependencies": {"left-pad": "1"}}\n'})
         self.repo.commit({"package.json": '{"scripts": {"left-pad": "echo"}, "dependencies": {}}\n'})
         tasks, dropped, verified = gen_tasks.generate(self._tmp.name)
-        self.assertEqual((tasks, dropped, verified), ([], 1, 0))
+        self.assertEqual(len(tasks), 1)
+        self.assertEqual((tasks[0]["type"], tasks[0]["subtype"], dropped), ("falsified", "removed", 0))
+
+    def test_changed_pin_is_falsified_and_unchanged_pin_is_live(self):
+        c1 = self.repo.commit({"package.json": pkg(a="1.0.0", b="2.0.0")})
+        c2 = self.repo.commit({"package.json": pkg(a="1.0.0", b="3.0.0")})
+        c3 = self.repo.commit({"package.json": pkg(a="1.0.0", b="3.0.0", c="1")})
+        tasks, _, _ = gen_tasks.generate(self._tmp.name)
+        repinned = self.by(tasks, "falsified", "b")
+        self.assertEqual([(t["subtype"], t["commit_a"], t["commit_b"]) for t in repinned], [("repinned", c1, c2)])
+        self.assertEqual(repinned[0]["dep"]["spec_at_a"], "2.0.0")
+        live_a = self.by(tasks, "live", "a")
+        self.assertEqual([(t["commit_a"], t["commit_b"]) for t in live_a], [(c1, c3)])
+        live_b = self.by(tasks, "live", "b")
+        self.assertEqual([(t["commit_a"], t["commit_b"]) for t in live_b], [(c2, c3)])
+
+    def test_root_manifest_flag(self):
+        self.repo.commit({"package.json": pkg(a="1"), "web/package.json": pkg(w="1")})
+        self.repo.commit({"package.json": pkg(), "web/package.json": pkg()})
+        tasks, _, _ = gen_tasks.generate(self._tmp.name)
+        flags = {t["dep"]["name"]: t["root_manifest"] for t in tasks}
+        self.assertEqual(flags, {"a": True, "w": False})
+
+    def test_queries_name_the_package_and_not_the_path(self):
+        self.repo.commit({"package.json": pkg(a="1")})
+        self.repo.commit({"package.json": pkg()})
+        task = gen_tasks.generate(self._tmp.name)[0][0]
+        self.assertIn("a", task["query"])
+        self.assertIn("`a`", task["query_typed"])
+        self.assertNotIn("package.json", task["query"] + task["query_typed"])
+
+    def test_abstain_tasks_ask_about_packages_never_declared(self):
+        self.repo.commit({"package.json": pkg(lodash="4", react="18")})
+        self.repo.commit({"package.json": pkg(lodash="4", react="18", zod="3")})
+        tasks, _, _ = gen_tasks.generate(self._tmp.name, abstain=10, seed=3)
+        abstain = [t for t in tasks if t["type"] == "abstain"]
+        self.assertEqual(len(abstain), 10)
+        names = {t["dep"]["name"] for t in abstain}
+        self.assertTrue(names.isdisjoint({"lodash", "react", "zod"}))
+        for t in abstain:
+            self.assertEqual((t["gold"], t["commit_a"], t["commit_b"]), ("abstain", t["commit_a"], t["commit_a"]))
+            self.assertTrue(t["root_manifest"])
+        again, _, _ = gen_tasks.generate(self._tmp.name, abstain=10, seed=3)
+        self.assertEqual(tasks, again)
 
     def test_cli_writes_jsonl(self):
         self.repo.commit({"package.json": pkg(a="1")})
