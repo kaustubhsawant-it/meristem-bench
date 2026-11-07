@@ -1,1 +1,3 @@
 Determinism check (2026-10-31): the held-out split was run two more times with the same tasks, floors and source commits, the second time under PYTHONHASHSEED=12345. All 13,244 rows were identical to the original run in every field except the latency field `ms`. Re-runs were checks, not new scorings; the scored result is the original run.
+
+Clean-checkout check (2026-11-07): the manifests of the original runs mark the system source as modified (the runner counts untracked files). The first held-out split was re-run on a clean checkout of tag paper-eval-1 (93292d9) with the same task files, floors and arms: all 13,244 rows were identical to the original run in every field except the latency field `ms`.
