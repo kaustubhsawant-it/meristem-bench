@@ -70,3 +70,37 @@ repos_set2:
     status: registered 2026-10-31
     pinned_sha: 9d81c12a2c411d3bf104368472b708a3218d9b4e
     commit_count_at_clone: 1589
+
+# Third held-out set, fixed 2026-11-14 before any task was mined from it (PROTOCOL.md, Amendment 4).
+# Used once, for the system after the pin-boundary, named-identifier and grouped-declaration changes.
+# Never used while developing or tuning. Selection rule: not in any earlier set, permissive licence,
+# a root manifest in a format the generator reads, at least 1000 commits, chosen by the assistant.
+repos_set3:
+  - name: rich
+    url: https://github.com/Textualize/rich
+    licence: MIT
+    language: Python
+    status: registered 2026-11-14
+    pinned_sha: 3a109ccdffe5b2d0e30684a304fbd388e99ce57b
+    commit_count_at_clone: 4470
+  - name: pydantic
+    url: https://github.com/pydantic/pydantic
+    licence: MIT
+    language: Python
+    status: registered 2026-11-14
+    pinned_sha: 560f0f96a37d6913afdfddb2de22030ef08e68c3
+    commit_count_at_clone: 5937
+  - name: mocha
+    url: https://github.com/mochajs/mocha
+    licence: MIT
+    language: JavaScript
+    status: registered 2026-11-14
+    pinned_sha: 5b5afa7b12e3f76f4e0c6afa12e960c0b378358c
+    commit_count_at_clone: 4228
+  - name: mongoose
+    url: https://github.com/Automattic/mongoose
+    licence: MIT
+    language: JavaScript
+    status: registered 2026-11-14
+    pinned_sha: ab4e3637a5a65f875e385abd4f3b77f457e66d78
+    commit_count_at_clone: 25547

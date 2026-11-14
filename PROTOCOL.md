@@ -132,3 +132,15 @@ The first held-out run (Meristem commit `93292d9`, tag `paper-eval-1`) exposed t
 5. The fixed system is also scored on the development split and on the first held-out split. Both are labelled post-hoc in every table, because the fixes were informed by them.
 6. Not fixed, and reported as limitations: weak abstention under the backticked phrasing, the recall cost of the relevance floor, and the gold labelling of a dependency declared on two lines with different environment markers (the gold rule is not changed, so the two held-out runs stay comparable).
 7. Failures on the second set are reported as found; no code change is made to improve its numbers, and any change made after seeing it is a new amendment that says so.
+
+## Amendment 4 (2026-11-14, after the second held-out run and a development pass, before any task is mined from the third set)
+
+After the second held-out run the system was changed again (Meristem commits `9fd2c6d` and `e5f7ea9`, on top of `bb1ee23`): a stored pin that is a prefix of the new pin now counts as changed; when a question names a typed identifier, a dependency fact is served only if its name matches (the weak abstention under the backticked phrasing listed in Amendment 3, item 6); pin checks were added for cargo, go.mod and pubspec; and a package declared more than once in a manifest is stored as one fact that lists every pin. The development pass cut the backticked-phrasing abstain rate on the development split from 30.7 % to 1.3 %; the same change was also run post-hoc on both earlier held-out sets (0.0 % and 1.7 %), which informed nothing further. Changes to the protocol:
+
+1. The two earlier held-out results stand as published. The post-hoc reruns of the changed system on them are labelled post-hoc and are not independent evidence.
+2. The changed system is tested on a third held-out set of four repositories (`repos_set3` in `repos.yml`: rich, pydantic, mocha, mongoose), pinned here before any task is mined from them, not used for development or tuning, scored once. The decision rule of section 5 applies unchanged.
+3. Selection rule, stated before cloning and applied by the assistant, not by the repository owner or the author: not in the development split or either earlier set, permissive licence, a root manifest in a format the task generator reads, at least 1000 commits. `execa` was cloned first, had 918 commits, failed the rule and was replaced by `mongoose` before anything was mined. No other candidate was considered.
+4. Floors stay frozen at the development values (`tasks/dev/floors.json`). Task generation uses the same settings: `--seed 20261030 --max-per-type 60 --abstain 30`.
+5. On the third set the system before this change (commit `bb1ee23`) is scored as well, so the effect of the change can be read on repositories neither version was developed against.
+6. Failures on the third set are reported as found; no code change is made to improve its numbers, and any change made after seeing it is a new amendment that says so.
+7. Self-authored as before: the same author wrote the system, the generator and the baselines.
