@@ -144,3 +144,14 @@ After the second held-out run the system was changed again (Meristem commits `9f
 5. On the third set the system before this change (commit `bb1ee23`) is scored as well, so the effect of the change can be read on repositories neither version was developed against.
 6. Failures on the third set are reported as found; no code change is made to improve its numbers, and any change made after seeing it is a new amendment that says so.
 7. Self-authored as before: the same author wrote the system, the generator and the baselines.
+
+### Amendment 4: third held-out run (2026-11-14, scored once)
+
+Tasks: 489 mined from the four registered repositories with the registered settings, floors frozen at 0.75. Changed system: Meristem commit `4c869e4` (run manifest records the sha). System before the change: commit `bb1ee23` exported to a separate source tree, so its manifest records no sha. Results are in `results/heldout3-changed-20261114` and `results/heldout3-prior-20261114`.
+
+| Arm `meristem`, floor 0.75 | Stale serves, plain / typed (of 139) | Live recall, plain / typed (of 74) | Backticked-phrasing abstain questions answered (of 120) |
+|---|---|---|---|
+| Before the change (`bb1ee23`) | 1 / 2 | 60 / 74 | 48 (40.0 %) |
+| Changed (`4c869e4`) | 1 / 2 | 60 / 74 | 2 (1.7 %) |
+
+The decision rule of section 5 gives "claim" for both systems under both phrasings. The change moves one thing on this set: the typed-phrasing abstain rate. Stale serves and live recall are identical, and the plain-phrasing live recall is 81.1 % for both. The two remaining typed answers were not examined. Self-authored, one run, four repositories; no code was changed after seeing these numbers.

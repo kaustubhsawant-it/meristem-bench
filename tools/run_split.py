@@ -19,7 +19,7 @@ import run_bench  # noqa: E402
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--split", choices=("dev", "heldout", "heldout2"), required=True)
+    ap.add_argument("--split", choices=("dev", "heldout", "heldout2", "heldout3"), required=True)
     ap.add_argument("--tasks-dir", type=Path, required=True)
     ap.add_argument("--corpora", type=Path, required=True)
     ap.add_argument("--floors", type=Path, required=True)

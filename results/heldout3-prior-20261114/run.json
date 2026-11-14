@@ -1,0 +1,93 @@
+{
+  "arms": [
+    "meristem",
+    "meristem_no_liveness",
+    "meristem_no_gate",
+    "embed_only",
+    "grep",
+    "grep_path_check",
+    "whole_file",
+    "oracle",
+    "meristem@0.7",
+    "embed_only@0.7",
+    "meristem@0.75"
+  ],
+  "bench": {
+    "dirty": true,
+    "sha": "0bac68772d7d5ea777d07f043dc5148439a6aff9"
+  },
+  "command": "tools/run_split.py --split heldout3 --tasks-dir tasks/heldout3 --corpora corpora/heldout3 --floors tasks/dev/floors.json --extra-arms meristem@0.7,embed_only@0.7,meristem@0.75 --note system before the change (bb1ee23) --out /private/tmp/claude-501/-Users-kaustubhsawant-Desktop-resume-proj-meristem-all/71883f39-87c2-4d68-b5ab-5478f3afaab4/scratchpad/bench/h3-prior",
+  "embedder": "bge-small-en-v1.5",
+  "errors": 0,
+  "floors": {
+    "embed_only": 0.75,
+    "meristem": 0.75,
+    "meristem_no_liveness": 0.75
+  },
+  "floors_tuned_on": [
+    "axios",
+    "click",
+    "fastify",
+    "requests",
+    "starlette"
+  ],
+  "liveness_freshness_seconds": 0,
+  "meristem_source": {
+    "dirty": false,
+    "sha": null
+  },
+  "n_tasks": 489,
+  "not_run": {
+    "cclint": "instruction-file checker; not installed offline",
+    "claudemd-auditor": "instruction-file checker; not installed offline",
+    "graphiti": "needs an LLM and a graph database; not installed",
+    "hipporag": "needs an LLM for open information extraction; not installed",
+    "mem0": "needs a hosted or local LLM to extract memories; no paid calls in this protocol",
+    "staleguard": "instruction-file checker; not installed offline",
+    "vigiles": "instruction-file checker; not installed offline"
+  },
+  "note": "system before the change (bb1ee23)",
+  "packages": {
+    "meristem": "0.3.0",
+    "numpy": "2.5.4",
+    "onnxruntime": "1.32.0",
+    "tokenizers": "0.23.3"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.12",
+  "query_styles": [
+    "query",
+    "query_typed"
+  ],
+  "repos": {
+    "mocha": {
+      "commit_count": 4228,
+      "dirty": false,
+      "sha": "5b5afa7b12e3f76f4e0c6afa12e960c0b378358c"
+    },
+    "mongoose": {
+      "commit_count": 25547,
+      "dirty": false,
+      "sha": "ab4e3637a5a65f875e385abd4f3b77f457e66d78"
+    },
+    "pydantic": {
+      "commit_count": 5937,
+      "dirty": false,
+      "sha": "560f0f96a37d6913afdfddb2de22030ef08e68c3"
+    },
+    "rich": {
+      "commit_count": 4470,
+      "dirty": false,
+      "sha": "3a109ccdffe5b2d0e30684a304fbd388e99ce57b"
+    }
+  },
+  "seconds": 109.4,
+  "split": "heldout3",
+  "started_at": "2026-11-14T10:45:37",
+  "tasks_sha256": {
+    "mocha.jsonl": "c4791613aa050d4c2a182f9820b91cc6542549649301cf63859ec4e80cd2a981",
+    "mongoose.jsonl": "7b3af8a63aed574c607c8450d8e03154db2a1f3934b79efb3a27c80106ca9a02",
+    "pydantic.jsonl": "bbaeb27548eb33bf1ee3cc77dfbb0bb3a7dad4dc6c741ad01523948578016e91",
+    "rich.jsonl": "c7e3d55988fda90293af99a35a29f51fbc3e9d467432815729000ffe5d64fb06"
+  }
+}
